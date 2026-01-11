@@ -2,7 +2,7 @@
 
 ## Paths
 
-Scripts go to ~/Scripts/
+Scripts go to ~/Scripts
 
 - ~/.tmux.conf 
 - ~/.config/starship.toml
