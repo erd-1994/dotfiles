@@ -21,12 +21,14 @@ $haskell\
 $python\
 [](fg:green bg:sapphire)\
 $conda\
-[](fg:sapphire bg:lavender)\
-$time\
 [](fg:lavender)\
 $cmd_duration\
 $line_break\
 $character"""
+
+# Commented out time
+# [](fg:sapphire bg:lavender)\
+# $time\
 
 palette = 'catppuccin_mocha'
 
