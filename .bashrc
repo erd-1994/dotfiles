@@ -73,8 +73,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 
 # Default editors
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 
 # Color support
 export CLICOLOR=1
@@ -90,6 +90,10 @@ export LESS_TERMCAP_us=$'\e[1;32m'
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+#export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/bin:$HOME/.local/bin:$PATH"
+
+
+export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify/uncrustify.cfg"
 
 
 #######################################################
@@ -339,8 +343,6 @@ esac
 # ALIASES - DEVELOPMENT
 #######################################################
 
-alias vim='nvim'
-alias vi='nvim'
 alias edit='$EDITOR'
 
 # Git shortcuts
@@ -391,8 +393,10 @@ alias servep='python3 -m http.server 8000 --bind 127.0.0.1'
 #######################################################
 # CUSTOM ALIASES
 #######################################################
-alias tmuxdefault='./Scripts/tmux.sh'
-
+alias tmuxdefault='/home/saulg/Scripts/tmux.sh'
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+alias copytoclip='xclip -selection clipboard <'
+alias shutthefuckdown='sudo shutdown now'
 
 
 # Bind Ctrl+f to zi (zoxide interactive)

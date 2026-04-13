@@ -22,7 +22,7 @@
 # lines = 80
 #
  [cursor.style]
- shape= "Beam"
+ shape= "Block"
  blinking = "Never"
 
  [colors]

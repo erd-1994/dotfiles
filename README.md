@@ -10,4 +10,5 @@ Scripts go to ~/Scripts
 - ~/.bash_profile
 - ~/.config/alacritty/alacritty.toml
 - ~/.config/nvim/init.lua
+- ~/.config/uncrustify/uncrustify.cfg
 
