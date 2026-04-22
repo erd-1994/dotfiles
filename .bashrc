@@ -397,6 +397,7 @@ alias tmuxdefault='/home/saulg/Scripts/tmux.sh'
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 alias copytoclip='xclip -selection clipboard <'
 alias shutthefuckdown='sudo shutdown now'
+alias leetpractice='node /home/saulg/github/leetcode-sync-claude/index.js sync'
 
 
 # Bind Ctrl+f to zi (zoxide interactive)
