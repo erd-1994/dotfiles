@@ -12,3 +12,12 @@ Scripts go to ~/Scripts
 - ~/.config/nvim/init.lua
 - ~/.config/uncrustify/uncrustify.cfg
 
+
+## Notes
+
+### NVIM
+
+- Stop the default theme from loading, load One Dark
+- Don't load the stupid fidget.nvim
+- Add LSPs
+
