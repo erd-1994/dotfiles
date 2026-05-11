@@ -217,7 +217,16 @@ vim.diagnostic.config {
   virtual_lines = false, -- Text shows up underneath the line, with virtual lines
 
   -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
-  jump = { float = true },
+
+  jump = {
+    on_jump = function(_, bufnr)
+      vim.diagnostic.open_float {
+        bufnr = bufnr,
+        scope = 'cursor',
+        focus = false,
+      }
+    end,
+  },
 }
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -425,23 +434,23 @@ require('lazy').setup({
       -- [[ Configure Harpoon ]]
       local harpoon = require 'harpoon'
 
--- REQUIRED
-harpoon:setup()
--- REQUIRED
+      -- REQUIRED
+      harpoon:setup()
+      -- REQUIRED
 
-vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)
-vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)
+      vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-vim.keymap.set('n', '<C-h>', function() harpoon:list():select(1) end)
-vim.keymap.set('n', '<C-t>', function() harpoon:list():select(2) end)
-vim.keymap.set('n', '<C-n>', function() harpoon:list():select(3) end)
-vim.keymap.set('n', '<C-s>', function() harpoon:list():select(4) end)
--- last change I made
+      vim.keymap.set('n', '<C-h>', function() harpoon:list():select(1) end)
+      vim.keymap.set('n', '<C-t>', function() harpoon:list():select(2) end)
+      vim.keymap.set('n', '<C-n>', function() harpoon:list():select(3) end)
+      vim.keymap.set('n', '<C-s>', function() harpoon:list():select(4) end)
+      -- last change I made
 
--- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set('n', '<C-S-P>', function() harpoon:list():prev() end)
-vim.keymap.set('n', '<C-S-N>', function() harpoon:list():next() end)
--- SAUL END
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set('n', '<C-S-P>', function() harpoon:list():prev() end)
+      vim.keymap.set('n', '<C-S-N>', function() harpoon:list():next() end)
+      -- SAUL END
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
@@ -767,12 +776,12 @@ vim.keymap.set('n', '<C-S-N>', function() harpoon:list():next() end)
       formatters_by_ft = {
         -- rust = { 'rustfmt' },
         -- Conform can also run multiple formatters sequentially
-        python = { "isort", "black" },
+        python = { 'isort', 'black' },
         c = { 'uncrustify' },
         java = { 'uncrustify' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -896,32 +905,31 @@ vim.keymap.set('n', '<C-S-N>', function() harpoon:list():next() end)
     'navarasu/onedark.nvim',
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-    require('onedark').setup {
-      style = 'dark',
-      transparent = false,
-      term_colors = true, -- Change terminal color as per the selected theme style
-      ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-      cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+      require('onedark').setup {
+        style = 'dark',
+        transparent = false,
+        term_colors = true, -- Change terminal color as per the selected theme style
+        ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+        cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
-      -- toggle theme style ---
-      toggle_style_key = '<leader>ts',
-      toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' }, -- List of styles to toggle between
+        -- toggle theme style ---
+        toggle_style_key = '<leader>ts',
+        toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' }, -- List of styles to toggle between
 
-      -- Change code style ---
-      -- Options are italic, bold, underline, none
-      -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
-code_style = {
-  comments = 'italic',
-  keywords = 'italic',
-  functions = 'none',
-  strings = 'none',
-  variables = 'none',
-},
-
-  }
-    require('onedark').load()
-    vim.cmd.colorscheme 'onedark'
-end,
+        -- Change code style ---
+        -- Options are italic, bold, underline, none
+        -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
+        code_style = {
+          comments = 'italic',
+          keywords = 'italic',
+          functions = 'none',
+          strings = 'none',
+          variables = 'none',
+        },
+      }
+      require('onedark').load()
+      vim.cmd.colorscheme 'onedark'
+    end,
   },
   -- SAUL END
 
