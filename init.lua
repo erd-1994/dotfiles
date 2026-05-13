@@ -672,9 +672,9 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         jdtls = {},
+        pyright = {},
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
